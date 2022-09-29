@@ -1,4 +1,10 @@
 # EEG analysis of target and non-target epochs 
+
+## Short description
+There are two types of data: target and non-target that are obtained by classifying the epochs into the specified classes. Independent component analysis (ICA) is applied to every dataset individually. With the help of EEGLAB, we will show data graphically using three functions.
+
+### Loading first data set in EEGLAB
+
 * In the first part of the code, we load one of the two "files". The first refers to the targeted, and the second to
 non-target classes of neurological reactions. We check the field with the eeg_checkset (EEG) command
 of EEG data sets. After that, we start the ICA decomposition with the pop_runica command
