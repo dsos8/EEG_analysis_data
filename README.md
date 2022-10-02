@@ -17,14 +17,17 @@ Command pop_erpimage is used for graphing 16 components.
 ```Matlab
 pop_erpimage(EEG,0, [i],[[]],['Component ', int2str(i)],10,1,{},[],'' ,'yerplabel','','erp','on','cbar','on','topo', { mean(EEG.icawinv(:,[i]),2)EEG.chanlocs EEG.chaninfo } );
 ```
-These are the results 
+These are the results for the first eight components: 
 
-* In the first part of the code, we load one of the two "files". The first refers to the targeted, and the second to
-non-target classes of neurological reactons. We check the field with the eeg_checkset (EEG) command
-of EEG data sets. After that, we start the ICA decomposition with the pop_runica command
-the algorithm we use is "runica". Then we create two for loops in which the command
-pop_erpimage we show 16 components, of which the first eight are in the first loop, and the second eight
-in the second for loop. Using the pop_topoplot command, we display those 16 components, i.e. theirs
-topographic 2-D maps. In the last step, we create two for loops as for "erp image"
-only that we use the command pop_newtimef with which we display the time/frequency
-decomposition of the activity of independent components.
+![alt text](https://github.com/dsos8/EEG_analysis_data/blob/main/ERP%201-8.png)
+
+Using the pop_topoplot command, we display those 16 components, i.e. their topographic 2-D maps:
+```Matlab
+pop_topoplot(EEG, 0, [1:16] ,'EEG target',[4 4] ,0,'electrodes','on');
+```
+In the last step, we use te command pop_newtimef which is used for graphing time/frequency decomposition of the activity of independent components:
+```Matlab
+pop_newtimef( EEG, 0, j, [0 1998], [3 0.8] , 'topovec', EEG.icawinv(:,j), 'elocs', EEG.chanlocs, 'chaninfo', EEG.chaninfo, 'caption',['IC 1. - 8. komponenta '],'baseline',[0], 'plotphase', 'off', 'padratio', 1);
+```
+
+Same process can be used for other non-tagret dataset.
